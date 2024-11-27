@@ -1,0 +1,15 @@
+services:
+  database_postgres:
+    container_name: postgresql
+    image: postgres:bullseye
+    restart: always
+    ports: 
+    - 83:5432
+    shm_size: 128mb
+    environment:
+    - POSTGRES_PASSWORD=abc1234
+  database_manager:
+    image: adminer
+    restart: always
+    ports:
+    - 82:8080

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: cartoes-ms
+  datasource:
+    url: jdbc:postgresql://localhost:83/postgres
+    username: postgres
+    password: abc1234
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baselineOnMigrate: true
+    table: versions
+serve:
+  port: 81
+
