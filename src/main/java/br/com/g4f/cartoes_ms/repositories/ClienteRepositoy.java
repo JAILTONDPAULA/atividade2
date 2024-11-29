@@ -1,13 +1,11 @@
 package br.com.g4f.cartoes_ms.repositories;
 
-import br.com.g4f.cartoes_ms.dtos.ClienteDto;
-import br.com.g4f.cartoes_ms.entities.ClienteEntity;
-import jakarta.validation.constraints.NotBlank;
+import br.com.g4f.cartoes_ms.entities.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
-public interface ClienteRepositoy extends JpaRepository<ClienteEntity,Long> {
-    ClienteEntity findByCpfAndDataNascimento(String cpf, LocalDate dataNascimento);
+public interface ClienteRepositoy extends JpaRepository<Cliente,Long> {
+    Cliente findByCpfAndDataNascimento(@Param("cpf") String cpf, @Param("dataNascimento") LocalDate dataNascimento);
 }

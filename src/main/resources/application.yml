@@ -10,6 +10,8 @@ spring:
     locations: classpath:db/migration
     baselineOnMigrate: true
     table: versions
-serve:
+  swagger-ui:
+    path: /swagger-ui.html
+server:
   port: 81
 
