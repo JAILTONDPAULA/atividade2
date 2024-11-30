@@ -30,3 +30,104 @@ O banco de dados está configurado com **Docker Compose**. Para levantar o banco
 
 ```bash
 docker-compose up
+```
+## Migrations com Flyway
+
+Este projeto utiliza o **Flyway** para o gerenciamento de migrações do banco de dados.  
+As migrações são arquivos SQL que ajudam a manter a estrutura do banco de dados sincronizada entre os diferentes ambientes.
+
+### Configuração
+
+As migrações estão localizadas no diretório `src/main/resources/db/migration`.  
+Certifique-se de que a configuração do Flyway no arquivo `application.yml` está apontando para a base de dados correta.
+
+### Comandos úteis
+
+- **Executar migrações automaticamente**: As migrações são executadas automaticamente ao iniciar a aplicação, desde que o Flyway esteja configurado no datasource.
+- **Executar migrações manualmente** (caso necessário):  
+  Utilize o comando abaixo no terminal:
+  ```bash
+  mvn flyway:migrate
+
+# Documentação da API
+
+## Cliente
+
+A API oferece os seguintes endpoints para gerenciamento de clientes:
+
+### 1. **GET /api/v1/clientes**
+
+Recupera uma lista de todos os clientes.
+
+- **Método**: `GET`
+- **URL**: `/api/v1/clientes`
+- **Descrição**: Retorna todos os clientes cadastrados.
+- **Resposta**:
+  - **Código 200**: Sucesso
+  - **Código 500**: Erro no servidor
+- **Formato da Resposta**: JSON ou XML
+
+**Exemplo de resposta**:
+```json
+[
+  {
+    "id": number,
+    "nomeCompleto": string,
+    "cpf": string",
+    "dataNascimento": date,
+    "stCivil": string,
+    "rendaMensal": number,
+    "aberturaConta": date",
+    "email": string
+  },
+]
+```
+### 2. **POST /api/v1/clientes**
+
+Recupera uma lista de todos os clientes.
+
+- **Método**: `POST`
+- **URL**: `/api/v1/clientes`
+- **Descrição**: Salva um novo cliente no banco de dados.
+- **Resposta**:
+  - **Código 201**: Sucesso
+  - **Código 500**: Erro no servidor
+- **Formato da Resposta**: JSON ou XML
+- **Formato da Envio**: JSON ou XML
+
+**Exemplo de envio**:
+```json
+{
+    "nomeCompleto" : string,
+    "cpf" : string,
+    "dataNascimento" : date
+    "email": string,
+    "rendaMensal": number,
+    "contaAberta": date
+}
+```
+### 2. **PUT /api/v1/clientes**
+
+Recupera uma lista de todos os clientes.
+
+- **Método**: `POST`
+- **URL**: `/api/v1/clientes/{id}`
+- **Descrição**: Atualizar dados do cliente no banco de dados.
+- **Resposta**:
+  - **Código 200**: Sucesso
+  - **Código 500**: Erro no servidor
+- **Formato da Resposta**: JSON ou XML
+- **Formato da Envio**: JSON ou XML
+
+**Exemplo de envio, podendo enviar um ou mais campos**:
+```json
+{
+    "nomeCompleto" : string,
+    "cpf" : string,
+    "dataNascimento" : date
+    "email": string,
+    "rendaMensal": number,
+    "contaAberta": date
+}
+
+

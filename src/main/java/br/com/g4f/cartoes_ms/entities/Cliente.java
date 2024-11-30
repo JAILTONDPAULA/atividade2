@@ -1,5 +1,7 @@
 package br.com.g4f.cartoes_ms.entities;
 
+import br.com.g4f.cartoes_ms.dtos.Cliente2Dto;
+import br.com.g4f.cartoes_ms.dtos.Cliente3Dto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,15 +26,25 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long       id;
-    private String     nome;
+    private String     nomeCompleto;
     private String     cpf;
     private LocalDate  dataNascimento;
     private String     stCivil;
     private BigDecimal rendaMensal;
     private String     eMail;
+    private LocalDate  aberturaConta;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private List<PropostaCredito> propostaCreditos = new ArrayList<>();
+    public void update(Cliente3Dto cliente) {
+        if( cliente.nomeCompleto()   != null ) { this.nomeCompleto  = cliente.nomeCompleto(); }
+        if( cliente.cpf()            != null ) { this.cpf           = cliente.cpf();          }
+        if( cliente.estadoCivil()    != null ) { this.stCivil       = cliente.estadoCivil();  }
+        if( cliente.rendaMensal()    != null ) { this.rendaMensal   = cliente.rendaMensal();  }
+        if( cliente.email()          != null ) { this.eMail         = cliente.email();        }
+        if( cliente.contaAberta()    != null ) { this.aberturaConta = cliente.contaAberta();  }
+    }
+
+//    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+//    @JsonManagedReference
+//    private List<PropostaCredito> propostaCreditos = new ArrayList<>();
 
 }

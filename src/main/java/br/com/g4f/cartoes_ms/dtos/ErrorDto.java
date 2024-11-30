@@ -1,7 +1,9 @@
 package br.com.g4f.cartoes_ms.dtos;
 
+import java.util.List;
+
 public record ErrorDto(
-        String message
+        List<String> message
 ) {
 
 }

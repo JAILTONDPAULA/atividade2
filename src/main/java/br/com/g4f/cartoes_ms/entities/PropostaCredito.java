@@ -12,21 +12,21 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-@Entity
-@Table
 @ToString(exclude = {"cliente"})
+//@Entity
+//@Table
 public class PropostaCredito implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long       id;
     private LocalDate  data;
     private BigDecimal valorAprovado;
     private String     status;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_cliente")
-    @JsonBackReference
-    private Cliente cliente;
+//    @ManyToOne
+//    @JoinColumn(name = "fk_cliente")
+//    @JsonBackReference
+//    private Cliente cliente;
 
 
 
