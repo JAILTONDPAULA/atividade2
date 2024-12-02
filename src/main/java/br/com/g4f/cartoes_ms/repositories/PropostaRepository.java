@@ -5,9 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PropostaRepository {
-//    extends JpaRepository<PropostaCredito,Long> {
-//
-//    List<PropostaCredito> findByClienteId(Long id);
-
+public interface PropostaRepository extends JpaRepository<PropostaCredito,Long> {
 }

@@ -49,6 +49,16 @@ Certifique-se de que a configuração do Flyway no arquivo `application.yml` est
   ```bash
   mvn flyway:migrate
 
+
+
+Este diagrama contém a representação gráfica do modelo de dados do sistema, mostrando as entidades, seus atributos e os relacionamentos entre elas.
+
+# DER
+### Como visualizar o DER
+1. Navegue até o diretório `src/main/resources/cets/`.
+2. Abra o arquivo `DER.drawio.png` em qualquer visualizador de imagens ou editor de diagramas que suporte o formato `.png`.
+
+
 # Documentação da API
 
 ## Cliente
@@ -106,7 +116,7 @@ Recupera uma lista de todos os clientes.
     "contaAberta": date
 }
 ```
-### 2. **PUT /api/v1/clientes**
+### 3. **PUT /api/v1/clientes**
 
 Recupera uma lista de todos os clientes.
 
@@ -129,5 +139,70 @@ Recupera uma lista de todos os clientes.
     "rendaMensal": number,
     "contaAberta": date
 }
+```
+
+## Proposta
+
+A API oferece os seguintes endpoints para gerenciamento de propostas:
+
+### 1. **GET /api/v1/propostas**
+
+Recupera uma lista de todas as propostas geradas.
+
+- **Método**: `GET`
+- **URL**: `/api/v1/propostas`
+- **Resposta**:
+  - **Código 200**: Sucesso
+  - **Código 500**: Erro no servidor
+- **Formato da Resposta**: JSON ou XML
+
+**Exemplo de resposta**:
+```json
+[
+  {
+        "id": number,
+        "data": date,
+        "valorAprovado": number,
+        "status": number,
+        "cliente": "cliente"
+    }
+]
+```
+### 2. **POST /api/v1/propostas**
+
+Gera uma nova proposta de crédito de acordo com cliente.
+
+- **Método**: `POST`
+- **URL**: `/api/v1/clientes/{idCliente}`
+- **Resposta**:
+  - **Código 201**: Sucesso
+  - **Código 500**: Erro no servidor
+- **Formato da Resposta**: JSON ou XML
+- **Formato da Envio**: JSON ou XML
+
+**Exemplo de resposta**:
+```json
+{
+  "id": number,
+  "data": date,
+  "valorAprovado": number,
+  "status": number,
+  "cliente": "cliente"
+}
+```
+
+### 3. **POST /api/v1/propostas**
+
+Gera aprovação e cartão de acordo com a proposta.
+
+- **Método**: `POST`
+- **URL**: `/api/v1/clientes/{id}`
+- **Resposta**:
+  - **Código 201**: Sucesso
+  - **Código 500**: Erro no servidor
+- **Formato da Resposta**: JSON ou XML
+- **Formato da Envio**: JSON ou XML
+
+**Retorna uma mensagem e envia um E-mail**
 
 

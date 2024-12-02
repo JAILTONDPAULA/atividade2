@@ -1,8 +1,9 @@
 package br.com.g4f.cartoes_ms.entities;
 
-import br.com.g4f.cartoes_ms.dtos.Cliente2Dto;
 import br.com.g4f.cartoes_ms.dtos.Cliente3Dto;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "cliente")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Cliente implements Serializable {
 
     @Id
@@ -43,8 +45,7 @@ public class Cliente implements Serializable {
         if( cliente.contaAberta()    != null ) { this.aberturaConta = cliente.contaAberta();  }
     }
 
-//    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-//    @JsonManagedReference
-//    private List<PropostaCredito> propostaCreditos = new ArrayList<>();
+    @OneToMany(mappedBy = "cliente")
+    private List<PropostaCredito> propostaCreditos = new ArrayList<>();
 
 }

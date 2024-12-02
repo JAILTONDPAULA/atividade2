@@ -27,7 +27,7 @@ public record Cliente2Dto(
 ) {
 
     public Cliente getCliente() {
-        return new Cliente(null, this.nomeCompleto, this.cpf, this.dataNascimento, this.estadoCivil, this.rendaMensal, this.email,this.contaAberta);
+        return new Cliente(null, this.nomeCompleto, this.cpf, this.dataNascimento, this.estadoCivil, this.rendaMensal, this.email,this.contaAberta,null);
     }
 
 }

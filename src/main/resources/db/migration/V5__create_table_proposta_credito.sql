@@ -1,7 +1,7 @@
 CREATE TABLE PROPOSTA_CREDITO (
     ID             BIGINT        DEFAULT NEXTVAL('SEQ_PROPOSTA_CREDITO'),
-    DATA           DATE          ,
-    VALOR_APROVADO NUMERIC(11,2) ,
+    DATA           DATE          NOT NULL,
+    VALOR_APROVADO NUMERIC(11,2) NOT NULL,
     STATUS         CHAR(1)       ,
     FK_CLIENTE     BIGINT        NOT NULL,
 
